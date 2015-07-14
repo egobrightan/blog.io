@@ -1,0 +1,15 @@
+<ion-view view-title="{{MainHeading}}">
+   <ion-content class="post-content">
+      <div class="list">
+        <a ng-repeat="cat in cats" class="item item-icon-right" href="#/blog/cat/{{cat.term}}">
+          {{cat.term}}
+          <i class="icon ion-android-arrow-forward"></i>
+        </a>
+      </div>
+      <ion-infinite-scroll
+          ng-if="catCompleted == false"
+          on-infinite="getPosts()"
+          distance="10%">
+     	</ion-infinite-scroll>
+	</ion-content>
+</ion-view>

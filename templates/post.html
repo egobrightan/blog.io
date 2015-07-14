@@ -1,0 +1,42 @@
+<ion-view view-title="{{ post.title.$t }}">
+  	<ion-content overflow-scroll="false" class="post-content post-post">
+    	<div class="list card">
+         <div class="item">
+            <h2 class="post-title">{{ post.title.$t }}</h2>
+            <p>{{post.updated.$t | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+         </div>
+   		
+         <div class="item item-body">
+            <div dir ng-bind-html="youtube">
+            </div>
+         </div>
+   		<div class="item" ng-show = " post.category.length > 0 ">
+         	<a ng-repeat=" cat in post.category " href="#/blog/cat/{{cat.term}}" class="button button-clear button-assertive">
+              {{cat.term}}
+            </a>
+         </div>
+         <div class="item tabs tabs-secondary tabs-icon-left">
+         	<a class="tab-item" ng-click="shareMain(post.title.$t,globalFunction.getPostUrlFeedSingle( post ))">
+               <i class="icon ion-share"></i>
+               Share
+            </a>
+         </div>
+    	</div>
+      <div class="list card" ng-show="comments">
+         <div class="item">
+         	<h2 class="post-title">{{comments.length}} comments</h2>
+         </div>
+    	</div>
+      <div class="list card"  ng-repeat="comment in comments" ng-show="comments">
+         <div class="item">
+         	<h2 class="post-title">{{comment.author[0].name.$t}}</h2>
+            <p>{{comment.published.$t | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+         </div>
+   		
+         <div class="item item-body">
+            <div ng-bind-html="comment.content.$t">
+            </div>
+         </div>
+    	</div>
+  </ion-content>
+</ion-view>

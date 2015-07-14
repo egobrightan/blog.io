@@ -1,0 +1,10 @@
+<ion-view view-title="{{MainHeading}}">
+   <ion-content class="post-content">
+      <div class="list">
+        <a ng-repeat="cat in Cats.items" class="item item-icon-right" href="#/blog/cat/{{cat.label}}">
+          {{cat.name}}
+          <i class="icon ion-android-arrow-forward"></i>
+        </a>
+      </div>
+   </ion-content>
+</ion-view>

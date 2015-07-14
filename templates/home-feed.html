@@ -1,0 +1,34 @@
+<ion-view view-title="{{MainHeading}}">
+  	<ion-content class="post-content">
+   	<ion-refresher
+       	pulling-text="Pull to refresh..."
+       	on-refresh="doRefresh()">
+     	</ion-refresher>
+    	<div class="list card" ng-repeat="post in posts" ng-show="post.title.$t">
+			<div class="item">
+        		<h2 class="post-title"><a href="#blog/post/{{$index}}">{{ post.title.$t }}</a></h2>
+        		<p>{{post.updated.$t | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+      	</div>
+   		<div class="item item-image">
+         	<a href="#blog/post/{{$index}}">
+         		<img class="full-image" ng-src="{{ globalFunction.getPostImageFeed(posts, $index) || 'img/photo.png' }}">
+         	</a>
+    		</div>
+         <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" ng-click='shareMain(post.title.$t,globalFunction.getPostUrlFeed(posts, $index))'>
+               <i class="icon ion-share"></i>
+               Share
+            </a>
+             <a href="#blog/post/{{$index}}" class="tab-item">
+               <i class="icon ion-log-in"></i>
+               Read More
+             </a>
+         </div>
+    	</div>
+      <ion-infinite-scroll
+       ng-if="postsCompleted == false"
+       on-infinite="getPosts()"
+       distance="10%">
+     </ion-infinite-scroll>
+  	</ion-content>
+</ion-view>

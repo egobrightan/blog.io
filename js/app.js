@@ -17,7 +17,7 @@ app.constant("ConfigHeading", {
 })
 // color variations
 app.constant("Color", {
-  "AppColor": "balanced", //light, stable, positive, calm, balanced, energized, assertive, royal, dark
+  "AppColor": "assertive", //light, stable, positive, calm, balanced, energized, assertive, royal, dark
 })
 // config admon
 app.constant("ConfigAdmob", {
